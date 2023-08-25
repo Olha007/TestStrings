@@ -1,8 +1,5 @@
 package teststring3;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * 1. До проекту TestStrings додайте пакет teststring3.
  * 2. Створіть клас Main, в ньому створіть статичний метод uniqueChars, який має приймати рядок як аргумент і
@@ -13,41 +10,37 @@ import java.util.List;
  * номер завдання, а також своє ім'я та прізвище.
  * 5. Надішліть викладачеві лістинги коду програм та результат їх роботи.
  * <p>
- * * @version 1.0
+ * * @version 1.1
  * * @autor Olha Nozdriukhina
  */
 
 public class Main {
-    public static void main(String[] args) {
 
-        String s = "Використання методів класу String";
-        char[] result = uniqueChars1(s);
-
-        for (char c : result) {
-            if (c != 0) {
-                System.out.print(c);
-            }
-        }
-    }
-
-    public static char[] uniqueChars1(String input) {
-        if (input == null) {
-            throw new IllegalArgumentException("Input string should not be null");
-        }
-
-        List<Character> uniqueCharList = new ArrayList<>();
+    public static char[] uniqueChars(String input) {
+        StringBuilder result = new StringBuilder();
 
         for (char c : input.toCharArray()) {
-            if (!uniqueCharList.contains(c)) {
-                uniqueCharList.add(c);
+            if (result.indexOf(String.valueOf(c)) == -1) {
+                result.append(c);
             }
         }
 
-        char[] uniqueCharsArray = new char[uniqueCharList.size()];
-        for (int i = 0; i < uniqueCharList.size(); i++) {
-            uniqueCharsArray[i] = uniqueCharList.get(i);
-        }
+        return result.toString().toCharArray();
+    }
 
-        return uniqueCharsArray;
+    public static void main(String[] args) {
+        String input = "Використання методів класу String";
+        char[] uniqueCharsArray = uniqueChars(input);
+
+        System.out.println("Унікальні символи рядка: ");
+        for (char c : uniqueCharsArray) {
+            System.out.print(c + " ");
+        }
     }
 }
+
+
+
+
+
+

@@ -13,7 +13,7 @@ import java.util.regex.Matcher;
  * 4. Додайте код для перевірки кожного з цих значень за допомогою методу checkPersonWithRegExp і виведіть результат
  * на консоль.
  * *
- * * @version 1.0
+ * * @version 1.1
  * * @autor Olha Nozdriukhina
  */
 
@@ -29,7 +29,7 @@ public class Main {
 
     public static boolean checkPersonWithRegExp(String input) {
         // Використовуємо регулярний вираз для перевірки умови
-        String regex = "^[A-Z][a-z]*$";
+        String regex = "^[A-Z][a-z]+$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(input);
 
