@@ -19,16 +19,44 @@ public class Main {
         IntegerWrapper intWrapper = new IntegerWrapper(5);
         DoubleWrapper doubleWrapper = new DoubleWrapper(3.5);
 
-        NumberWrapper resultWrapper = compute(intWrapper, doubleWrapper);
+        Number result = compute(intWrapper, doubleWrapper);
 
         // Перевірка твердження
-        assert resultWrapper.getValue() == 8.5 : "Помилка: результат не відповідає очікуваному значенню";
+        assert result.doubleValue() == 8.5 : "Помилка: результат не відповідає очікуваному значенню";
 
-        System.out.println("Результат вірний: " + resultWrapper.getValue());
+        System.out.println("Результат вірний: " + result);
     }
 
-    public static NumberWrapper compute(NumberWrapper first, NumberWrapper second) {
-        double sum = first.getValue() + second.getValue();
-        return new NumberWrapper(sum);
+//    public static NumberWrapper compute(NumberWrapper first, NumberWrapper second) {
+//        double sum = first.getValue() + second.getValue();
+//        return new NumberWrapper(sum);
+//    }
+
+    public static Number compute(IntegerWrapper a, DoubleWrapper b) {
+        return a.getValue() + b.getValue();
+    }
+}
+
+class NumberWrapper {
+    private double value;
+
+    public NumberWrapper(double value) {
+        this.value = value;
+    }
+
+    public double getValue() {
+        return value;
+    }
+}
+
+class IntegerWrapper extends NumberWrapper {
+    public IntegerWrapper(double value) {
+        super(value);
+    }
+}
+
+class DoubleWrapper extends NumberWrapper {
+    public DoubleWrapper(double value) {
+        super(value);
     }
 }

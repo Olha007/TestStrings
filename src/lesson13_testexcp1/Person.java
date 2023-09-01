@@ -21,6 +21,13 @@ public class Person {
     String lastName;
     int age;
 
+    public void setAge(int age) throws InvalidAgeException {
+        if (age < 1 || age > 120) {
+            throw new InvalidAgeException();
+        }
+        this.age = age;
+    }
+
     public Person(String firstName, String lastName, int age) throws InvalidAgeException {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -47,10 +54,12 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public void setAge(int age) throws InvalidAgeException {
-        if (age < 1 || age > 120) {
-            throw new InvalidAgeException();
-        }
-        this.age = age;
+    @Override
+    public String toString() {
+        return "Person{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                '}';
     }
 }
