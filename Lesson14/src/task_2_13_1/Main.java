@@ -31,20 +31,18 @@ public class Main {
         }
 
         System.out.println();
-        boolean haveJavaClass = true; // Припустимо, що у нас є заняття з Java
+        boolean haveJavaClass = true;
 
         for (MyDayOfWeek day : MyDayOfWeek.values()) {
             switch (day) {
-                case WEDNESDAY:
-                case FRIDAY:
+                case WEDNESDAY, FRIDAY -> {
                     if (haveJavaClass) {
                         System.out.println("Have Java class on " + day);
                     }
-                    break;
-                default:
-                    System.out.println("No Java class on " + day);
-                    break;
+                }
+                default -> System.out.println("No Java class on " + day);
             }
         }
     }
 }
+
