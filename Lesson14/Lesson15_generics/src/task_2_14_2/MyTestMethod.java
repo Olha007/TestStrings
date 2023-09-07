@@ -23,24 +23,17 @@ import java.text.DecimalFormat;
 
 public class MyTestMethod {
 
-    public static <T extends Comparable<T>> double calcSum(T[] array, T maxval) {
+    public static <T extends Number & Comparable<T>> double calcSum(T[] array, T maxval) {
         double sum = 0.0;
 
         for (T element : array) {
             if (element.compareTo(maxval) > 0) {
-                if (element instanceof Number) {
-                    sum += ((Number) element).doubleValue();
-                } else {
-                    throw new IllegalArgumentException("Елементи масиву повинні бути числового типу ");
-                }
+                sum += element.doubleValue();
             }
         }
         return sum;
     }
-}
 
-
-class Main {
     public static void main(String[] args) {
         Integer[] intArray = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         Double[] doubleArray = {1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9};
@@ -49,7 +42,7 @@ class Main {
         printArray(intArray);
 
         System.out.println("Сума елементів, що перевищують 3 (Integer):");
-        double intSum = MyTestMethod.calcSum(intArray, 3);
+        double intSum = calcSum(intArray, 3);
         System.out.println(intSum);
         System.out.println();
 
@@ -57,10 +50,8 @@ class Main {
         printArray(doubleArray);
 
         System.out.println("Сума елементів, що перевищують 3 (Double):");
-        double doubleSum = MyTestMethod.calcSum(doubleArray, 3D);
+        double doubleSum = calcSum(doubleArray, 3D);
         System.out.println(formatDecimal(doubleSum));
-
-
     }
 
     public static <T> void printArray(T[] array) {
