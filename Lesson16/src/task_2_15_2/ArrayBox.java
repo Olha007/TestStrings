@@ -21,7 +21,6 @@ import java.util.Random;
  * * @version 1.0
  * * @author Olha Nozdriukhina
  */
-
 public class ArrayBox<T extends Number> {
 
     private List<T> list = new ArrayList<>();
@@ -33,15 +32,16 @@ public class ArrayBox<T extends Number> {
             fillListWithRandomInteger(size);
         } else if (typeName.equals("Float")) {
             fillListWithRandomFloat(size);
-        }else
+        } else {
             throw new IllegalArgumentException("Wrong name type ");
+        }
     }
 
     private void fillListWithRandomBytes(int size){
         Random random = new Random();
         for (int i = 0; i < size; i++){
             byte randomByte = (byte) (random.nextInt(256) - 128); // від -128 до 127
-            list.add((T) Byte.valueOf(randomByte));
+            list.add((T) (Number) randomByte);
         }
     }
 
@@ -56,7 +56,8 @@ public class ArrayBox<T extends Number> {
     private void fillListWithRandomFloat(int size) {
         Random random = new Random();
         for (int i = 0; i < size; i++) {
-            float randomFloat = random.nextFloat();
+            int randomIntBits = random.nextInt();
+            float randomFloat = Float.intBitsToFloat(randomIntBits);
             list.add((T) Float.valueOf(randomFloat));
         }
     }
@@ -77,7 +78,6 @@ class Main {
         ArrayBox<Byte> byteArrayBox = new ArrayBox<>(7, "Byte");
         ArrayBox<Integer> intArrayBox = new ArrayBox<>(6, "Integer");
         ArrayBox<Float> floatArrayBox = new ArrayBox<>(5, "Float");
-
 
         System.out.println("Positive elements for Byte: ");
         List<Byte> positiveBytes = byteArrayBox.getPositiveValues();
@@ -100,3 +100,4 @@ class Main {
         }
     }
 }
+
