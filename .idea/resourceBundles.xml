@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ResourceBundleManager">
+    <file url="file://$PROJECT_DIR$/Lesson20/src/SentencesBundle_de.properties" />
+    <file url="file://$PROJECT_DIR$/Lesson20/src/SentencesBundle_fr.properties" />
+    <file url="file://$PROJECT_DIR$/Lesson20/src/SentencesBundle_it.properties" />
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/Lesson20/src/SentencesBundle_de.properties" />
+      <file value="file://$PROJECT_DIR$/Lesson20/src/SentencesBundle_fr.properties" />
+      <file value="file://$PROJECT_DIR$/Lesson20/src/SentencesBundle_it.properties" />
+      <file value="file://$PROJECT_DIR$/Lesson20/src/SentencesBundle_ua.properties" />
+      <base-name>SentencesBundle</base-name>
+    </custom-resource-bundle>
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/Lesson20/src/task_2_18_4/SentencesBundle_fr.properties" />
+      <file value="file://$PROJECT_DIR$/Lesson20/src/task_2_18_4/SentencesBundle_it.properties" />
+      <base-name>SentencesBundle</base-name>
+    </custom-resource-bundle>
+    <custom-resource-bundle>
+      <file value="file://$PROJECT_DIR$/Lesson20/src/task_2_18_4/SentencesBundle_fr.properties" />
+      <file value="file://$PROJECT_DIR$/Lesson20/src/task_2_18_4/SentencesBundle_it.properties" />
+      <file value="file://$PROJECT_DIR$/Lesson20/src/task_2_18_4/SentencesBundle_ua.properties" />
+      <base-name>SentencesBundle</base-name>
+    </custom-resource-bundle>
+  </component>
+</project>
