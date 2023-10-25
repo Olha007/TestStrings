@@ -76,7 +76,7 @@ class SquarePegAdapter extends RoundPeg {
 
     @Override
     public double getRadius() {
-        return Math.sqrt(2) * peg.getWidth() / 2;
+        return peg.getWidth() * Math.sqrt(2);
     }
 }
 

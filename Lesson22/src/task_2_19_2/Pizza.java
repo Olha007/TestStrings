@@ -18,7 +18,6 @@ package task_2_19_2;
  * * @author Olha Nozdriukhina
  */
 
-// Клас Pizza
 public class Pizza {
     private boolean base;
     private boolean cheese;
@@ -27,6 +26,9 @@ public class Pizza {
     private boolean mushrooms;
     private boolean pineapple;
     private boolean chicken;
+
+    public Pizza() {
+    }
 
     public void setBase(boolean base) {
         this.base = base;
@@ -74,32 +76,101 @@ public class Pizza {
 class PizzaBuilder {
     protected Pizza pizza;
 
-    public void createPizza() {
-        pizza = new Pizza();
-        pizza.setBase(true);
-        pizza.setCheese(true);
-        pizza.setSauce(true);
+    public PizzaBuilder() {
+        this.pizza = new Pizza();
+    }
+
+    public PizzaBuilder addBase() {
+        this.pizza.setBase(true);
+        return this;
+    }
+
+    public PizzaBuilder addCheese() {
+        this.pizza.setCheese(true);
+        return this;
+    }
+
+    public PizzaBuilder addSauce() {
+        this.pizza.setSauce(true);
+        return this;
+    }
+
+    public PizzaBuilder addPepperoni() {
+        this.pizza.setPepperoni(true);
+        return this;
+    }
+
+    public PizzaBuilder addMushrooms() {
+        this.pizza.setMushrooms(true);
+        return this;
+    }
+
+    public PizzaBuilder addPineapple() {
+        this.pizza.setPineapple(true);
+        return this;
+    }
+
+    public PizzaBuilder addChicken() {
+        this.pizza.setChicken(true);
+        return this;
+    }
+
+    public Pizza build() {
+        return this.pizza;
     }
 }
 
 // HawaiiPizzaBuilder
 class HawaiiPizzaBuilder extends PizzaBuilder {
+    public HawaiiPizzaBuilder() {
+        super();
+    }
+
     @Override
-    public void createPizza() {
-        super.createPizza();
-        pizza.setPineapple(true);
-        pizza.setChicken(true);
-        pizza.setPepperoni(true);
+    public HawaiiPizzaBuilder addPineapple() {
+        this.pizza.setPineapple(true);
+        return this;
+    }
+
+    @Override
+    public HawaiiPizzaBuilder addChicken() {
+        this.pizza.setChicken(true);
+        return this;
+    }
+
+    @Override
+    public HawaiiPizzaBuilder addPepperoni() {
+        this.pizza.setPepperoni(true);
+        return this;
+    }
+
+    @Override
+    public Pizza build() {
+        return this.pizza;
     }
 }
 
 // MontanaraPizzaBuilder
 class MontanaraPizzaBuilder extends PizzaBuilder {
+    public MontanaraPizzaBuilder() {
+        super();
+    }
+
     @Override
-    public void createPizza() {
-        super.createPizza();
-        pizza.setMushrooms(true);
-        pizza.setPepperoni(true);
+    public MontanaraPizzaBuilder addMushrooms() {
+        this.pizza.setMushrooms(true);
+        return this;
+    }
+
+    @Override
+    public MontanaraPizzaBuilder addPepperoni() {
+        this.pizza.setPepperoni(true);
+        return this;
+    }
+
+    @Override
+    public Pizza build() {
+        return this.pizza;
     }
 }
 
@@ -112,8 +183,7 @@ class PizzaBaker {
     }
 
     public Pizza makePizza() {
-        pizzaBuilder.createPizza();
-        return pizzaBuilder.pizza;
+        return this.pizzaBuilder.build();
     }
 }
 
@@ -123,8 +193,8 @@ class Main {
         HawaiiPizzaBuilder hawaiiPizzaBuilder = new HawaiiPizzaBuilder();
         MontanaraPizzaBuilder montanaraPizzaBuilder = new MontanaraPizzaBuilder();
 
-        PizzaBaker pizzaBaker1 = new PizzaBaker(hawaiiPizzaBuilder);
-        PizzaBaker pizzaBaker2 = new PizzaBaker(montanaraPizzaBuilder);
+        PizzaBaker pizzaBaker1 = new PizzaBaker(hawaiiPizzaBuilder.addBase().addCheese().addSauce().addPineapple().addChicken().addPepperoni());
+        PizzaBaker pizzaBaker2 = new PizzaBaker(montanaraPizzaBuilder.addBase().addCheese().addSauce().addMushrooms().addPepperoni());
 
         System.out.println("Ingredients for Hawaii Pizza: ");
         System.out.println(pizzaBaker1.makePizza());
@@ -133,4 +203,6 @@ class Main {
         System.out.println(pizzaBaker2.makePizza());
     }
 }
+
+
 

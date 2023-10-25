@@ -23,11 +23,16 @@ public class DateDifferenceCalculator {
         Period period = Period.between(dateTime2.toLocalDate(), dateTime1.toLocalDate());
         Duration duration = Duration.between(dateTime2, dateTime1);
 
+        if (duration.isNegative()) {
+            period = period.minusDays(1);
+            duration = duration.plusDays(1);
+        }
+
         long years = period.getYears();
         long months = period.getMonths();
         long days = period.getDays();
 
-        long hours = duration.toHours();
+        long hours = duration.toHours() % 24;
         long minutes = duration.toMinutes() % 60;
         long seconds = duration.getSeconds() % 60;
 
