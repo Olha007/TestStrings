@@ -68,7 +68,8 @@ class Main {
         MyTimeBomb bomb1 = new MyTimeBomb();
         bomb1.start();
 
-        MyTimeBomb bomb2 = new MyTimeBomb();
+        MyTimeBombTask bombTask = new MyTimeBombTask();
+        Thread bomb2 = new Thread(bombTask);
         bomb2.start();
     }
 }

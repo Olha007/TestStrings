@@ -78,21 +78,9 @@ class PizzaBuilder {
 
     public PizzaBuilder() {
         this.pizza = new Pizza();
-    }
-
-    public PizzaBuilder addBase() {
         this.pizza.setBase(true);
-        return this;
-    }
-
-    public PizzaBuilder addCheese() {
         this.pizza.setCheese(true);
-        return this;
-    }
-
-    public PizzaBuilder addSauce() {
         this.pizza.setSauce(true);
-        return this;
     }
 
     public PizzaBuilder addPepperoni() {
@@ -139,12 +127,6 @@ class HawaiiPizzaBuilder extends PizzaBuilder {
     }
 
     @Override
-    public HawaiiPizzaBuilder addPepperoni() {
-        this.pizza.setPepperoni(true);
-        return this;
-    }
-
-    @Override
     public Pizza build() {
         return this.pizza;
     }
@@ -157,14 +139,14 @@ class MontanaraPizzaBuilder extends PizzaBuilder {
     }
 
     @Override
-    public MontanaraPizzaBuilder addMushrooms() {
-        this.pizza.setMushrooms(true);
+    public MontanaraPizzaBuilder addPepperoni() {
+        this.pizza.setPepperoni(true);
         return this;
     }
 
     @Override
-    public MontanaraPizzaBuilder addPepperoni() {
-        this.pizza.setPepperoni(true);
+    public MontanaraPizzaBuilder addMushrooms() {
+        this.pizza.setMushrooms(true);
         return this;
     }
 
@@ -193,8 +175,8 @@ class Main {
         HawaiiPizzaBuilder hawaiiPizzaBuilder = new HawaiiPizzaBuilder();
         MontanaraPizzaBuilder montanaraPizzaBuilder = new MontanaraPizzaBuilder();
 
-        PizzaBaker pizzaBaker1 = new PizzaBaker(hawaiiPizzaBuilder.addBase().addCheese().addSauce().addPineapple().addChicken().addPepperoni());
-        PizzaBaker pizzaBaker2 = new PizzaBaker(montanaraPizzaBuilder.addBase().addCheese().addSauce().addMushrooms().addPepperoni());
+        PizzaBaker pizzaBaker1 = new PizzaBaker(hawaiiPizzaBuilder.addPineapple().addChicken());
+        PizzaBaker pizzaBaker2 = new PizzaBaker(montanaraPizzaBuilder.addMushrooms());
 
         System.out.println("Ingredients for Hawaii Pizza: ");
         System.out.println(pizzaBaker1.makePizza());
@@ -203,6 +185,8 @@ class Main {
         System.out.println(pizzaBaker2.makePizza());
     }
 }
+
+
 
 
 
