@@ -14,6 +14,7 @@
       <module fileurl="file://$PROJECT_DIR$/Lesson23/Lesson23.iml" filepath="$PROJECT_DIR$/Lesson23/Lesson23.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson24/Lesson24_synmethods.iml" filepath="$PROJECT_DIR$/Lesson24/Lesson24_synmethods.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson25_executors/Lesson25_executors.iml" filepath="$PROJECT_DIR$/Lesson25_executors/Lesson25_executors.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_26_ locks/Lesson_26_ locks.iml" filepath="$PROJECT_DIR$/Lesson_26_ locks/Lesson_26_ locks.iml" />
       <module fileurl="file://$PROJECT_DIR$/TestStrings.iml" filepath="$PROJECT_DIR$/TestStrings.iml" />
       <module fileurl="file://$PROJECT_DIR$/WrapperDemo/WrapperDemo.iml" filepath="$PROJECT_DIR$/WrapperDemo/WrapperDemo.iml" />
     </modules>

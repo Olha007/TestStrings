@@ -23,22 +23,31 @@ public class Storage {
     private boolean isWritingDone = false;
 
     public synchronized void setData(int data) {
+        while (isWritingDone) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                System.out.println("setData interrupted");
+            }
+        }
         this.data = data;
-        notify();
-    }
-
-    public synchronized int getData() throws InterruptedException {
-        wait();
-        return data;
-    }
-
-    public synchronized void setWritingDone() {
         isWritingDone = true;
         notify();
     }
 
-    public synchronized boolean isWritingDone() {
-        return isWritingDone;
+    public synchronized int getData() {
+        while (!isWritingDone) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                System.out.println("getData interrupted");
+            }
+        }
+        isWritingDone = false;
+        notify();
+        return data;
     }
 }
 
@@ -54,7 +63,6 @@ class Counter extends Thread {
         for (int i = 0; i <= 1000; i++) {
             storage.setData(i);
         }
-        storage.setWritingDone();
     }
 }
 
@@ -67,14 +75,9 @@ class Printer extends Thread {
 
     @Override
     public void run() {
-        while (!storage.isWritingDone()) {
-            try {
-                int data = storage.getData();
-                System.out.println(data);
-            } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                System.out.println("Printer interrupted");
-            }
+        while (true) {
+            int data = storage.getData();
+            System.out.println(data);
         }
     }
 }
@@ -89,4 +92,5 @@ class Main {
         printer.start();
     }
 }
+
 

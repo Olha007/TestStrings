@@ -18,19 +18,19 @@ public class Storage {
     private int data;
     private boolean isWritingDone = false;
 
-    public synchronized int getData() {
+    public int getData() {
         return data;
     }
 
-    public synchronized void setData(int data) {
+    public void setData(int data) {
         this.data = data;
     }
 
-    public synchronized boolean isWritingDone() {
+    public boolean isWritingDone() {
         return isWritingDone;
     }
 
-    public synchronized void setWritingDone(boolean isWritingDone) {
+    public void setWritingDone(boolean isWritingDone) {
         this.isWritingDone = isWritingDone;
     }
 }
@@ -98,5 +98,6 @@ class Main {
         printer.start();
     }
 }
+
 
 
