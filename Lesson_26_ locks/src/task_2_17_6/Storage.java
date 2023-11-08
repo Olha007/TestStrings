@@ -21,6 +21,7 @@ public class Storage {
     private final Condition condition = lock.newCondition();// Створення об'єкта Condition для управління умовами
 
     // Метод для встановлення даних з використанням ReentrantLock і Condition
+    // Метод для встановлення даних з використанням ReentrantLock і Condition
     public void setData(int data) {
         lock.lock();
         try {
@@ -60,7 +61,7 @@ public class Storage {
     }
 }
 
-class Counter extends Thread {
+    class Counter extends Thread {
     private final Storage storage;
 
     public Counter(Storage storage) {
@@ -84,7 +85,7 @@ class Printer extends Thread {
 
     @Override
     public void run() {
-        while (true) {
+        for (int i = 0; i < 1000; i++) {
             int data = storage.getData();
             System.out.println(data);
         }

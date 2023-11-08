@@ -46,17 +46,18 @@ class Counter extends Thread {
     public void run() {
         synchronized (storage) {
             for (int i = 0; i <= 1000; i++) {
-                storage.setData(i);
-                storage.notify();
-                try {
-                    storage.wait();
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    System.out.println("Counter interrupted");
+                while (!storage.isWritingDone()) {
+                    try {
+                        storage.wait();
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        System.out.println("Counter interrupted");
+                    }
                 }
+                storage.setData(i);
+                storage.setWritingDone(false);
+                storage.notify();
             }
-            storage.setWritingDone(true);
-            storage.notify();
         }
     }
 }
@@ -71,18 +72,22 @@ class Printer extends Thread {
     @Override
     public void run() {
         synchronized (storage) {
-            while (!storage.isWritingDone()) {
-                try {
-                    int data = storage.getData();
-                    System.out.println(data);
-                    storage.notify();
-                    if (!storage.isWritingDone()) {
+            while (true) {
+                while (storage.isWritingDone()) {
+                    try {
                         storage.wait();
+                    } catch (InterruptedException e) {
+                        Thread.currentThread().interrupt();
+                        System.out.println("Printer interrupted");
                     }
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                    System.out.println("Printer interrupted");
                 }
+                if (storage.getData() == 1000) {
+                    break;
+                }
+                int data = storage.getData();
+                System.out.println(data);
+                storage.setWritingDone(true);
+                storage.notify();
             }
         }
     }
@@ -98,6 +103,7 @@ class Main {
         printer.start();
     }
 }
+
 
 
 

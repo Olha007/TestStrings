@@ -27,8 +27,8 @@ public class Storage {
             try {
                 wait();
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                System.out.println("setData interrupted");
+                // Thread.currentThread().interrupt();
+                // System.out.println("setData interrupted");
             }
         }
         this.data = data;
@@ -41,8 +41,8 @@ public class Storage {
             try {
                 wait();
             } catch (InterruptedException e) {
-                Thread.currentThread().interrupt();
-                System.out.println("getData interrupted");
+                //Thread.currentThread().interrupt();
+                //System.out.println("getData interrupted");
             }
         }
         isWritingDone = false;
@@ -53,31 +53,45 @@ public class Storage {
 
 class Counter extends Thread {
     private final Storage storage;
+    private final int times;
 
-    public Counter(Storage storage) {
+    public Counter(Storage storage, int times) {
         this.storage = storage;
+        this.times = times;
     }
 
     @Override
     public void run() {
-        for (int i = 0; i <= 1000; i++) {
+        for (int i = 0; i <= times; i++) {
             storage.setData(i);
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
 
 class Printer extends Thread {
+    private final int times;
     private final Storage storage;
 
-    public Printer(Storage storage) {
+    public Printer(Storage storage, int times) {
         this.storage = storage;
+        this.times = times;
     }
 
     @Override
     public void run() {
-        while (true) {
+        for (int i = 0; i <= times; i++) {
             int data = storage.getData();
             System.out.println(data);
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
@@ -85,8 +99,9 @@ class Printer extends Thread {
 class Main {
     public static void main(String[] args) {
         Storage storage = new Storage();
-        Counter counter = new Counter(storage);
-        Printer printer = new Printer(storage);
+        int times = 1000;
+        Counter counter = new Counter(storage, times);
+        Printer printer = new Printer(storage, times);
 
         counter.start();
         printer.start();
