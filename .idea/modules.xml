@@ -14,10 +14,17 @@
       <module fileurl="file://$PROJECT_DIR$/Lesson23/Lesson23.iml" filepath="$PROJECT_DIR$/Lesson23/Lesson23.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson24/Lesson24_synmethods.iml" filepath="$PROJECT_DIR$/Lesson24/Lesson24_synmethods.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson25_executors/Lesson25_executors.iml" filepath="$PROJECT_DIR$/Lesson25_executors/Lesson25_executors.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson28/Lesson28.iml" filepath="$PROJECT_DIR$/Lesson28/Lesson28.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_26_ locks/Lesson_26_ locks.iml" filepath="$PROJECT_DIR$/Lesson_26_ locks/Lesson_26_ locks.iml" />
       <module fileurl="file://$PROJECT_DIR$/Lesson_27/Lesson_27.iml" filepath="$PROJECT_DIR$/Lesson_27/Lesson_27.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_29/Lesson_29.iml" filepath="$PROJECT_DIR$/Lesson_29/Lesson_29.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_30/Lesson_30.iml" filepath="$PROJECT_DIR$/Lesson_30/Lesson_30.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_31/Lesson_31.iml" filepath="$PROJECT_DIR$/Lesson_31/Lesson_31.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_33/Lesson_33.iml" filepath="$PROJECT_DIR$/Lesson_33/Lesson_33.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Lesson_34/Lesson_34.iml" filepath="$PROJECT_DIR$/Lesson_34/Lesson_34.iml" />
       <module fileurl="file://$PROJECT_DIR$/TestStrings.iml" filepath="$PROJECT_DIR$/TestStrings.iml" />
       <module fileurl="file://$PROJECT_DIR$/WrapperDemo/WrapperDemo.iml" filepath="$PROJECT_DIR$/WrapperDemo/WrapperDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lesson_32/lesson_32.iml" filepath="$PROJECT_DIR$/lesson_32/lesson_32.iml" />
     </modules>
   </component>
 </project>

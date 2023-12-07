@@ -27,12 +27,7 @@ public class Main {
         cars.put("S456", new Car("Buick", "Skylark"));
         cars.put("S789", new Car("Toyota", "Prius"));
 
-        cars.merge("S123", new Car("Chevy", "Vega"), (existingCar, newCar) -> {
-            // Зміна виробника і моделі
-            existingCar.manufacturer = newCar.manufacturer;
-            existingCar.model = newCar.model;
-            return existingCar;
-        });
+        cars.merge("S123", new Car("Chevy", "Vega"), Car::mergeCars);
 
         // Видалення Toyota
         cars.remove("S789");
@@ -53,5 +48,8 @@ class Car {
         this.manufacturer = manufacturer;
         this.model = model;
     }
-}
 
+    public static Car mergeCars(Car existingCar, Car newCar) {
+        return new Car(newCar.manufacturer, existingCar.model);
+    }
+}
